@@ -23,3 +23,13 @@ steps:
     PathtoPublish: dist
     ArtifactName: dist
   displayName: 'Publish Artifact: dist'
+
+- task: AzureRmWebAppDeployment@3
+  displayName: 'Azure App Service Deploy: WITB'
+  inputs:
+    azureSubscription: 'Free Trial (a752df00-bd20-4955-86b5-09121cbfb1ec)'
+    WebAppName: WITB
+    Package: '$(System.DefaultWorkingDirectory)/dist/WITB'
+    UseWebDeploy: true
+    RemoveAdditionalFilesFlag: true
+
